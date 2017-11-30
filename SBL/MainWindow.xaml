@@ -1,0 +1,6 @@
+﻿<NavigationWindow x:Class="SBL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="750" Width="1250"
+        Source ="StartPage.xaml" Margin ="100,100,0,0" ShowsNavigationUI="False" >
+</NavigationWindow>

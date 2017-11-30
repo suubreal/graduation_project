@@ -1,0 +1,111 @@
+﻿<Page x:Class="SBL.ExercisePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      Height="750" Width="1250"
+	    Title="ExercisePage"
+      Loaded="ExercisePage_Loaded"  ShowsNavigationUI="False" 
+      >
+    <!-- closing 추가해야되는데 page라서 안된다 exercise page끝나는 부분에  exercisepage_closing추가-->
+    
+    <Page.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="ScreenshotButton" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" Background="Transparent">
+                                <TextBlock x:Name="ScreenshotText" Text="{TemplateBinding Content}" TextAlignment="Left"  VerticalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontSize="15" />
+                                <Grid Margin="9,0,0,0">
+                                    <Image x:Name="ScreenshotNormal" Source="Images\ScreenshotNormal.png" Stretch="None" HorizontalAlignment="Center" />
+                                    <Image x:Name="ScreenshotHover" Source="Images\ScreenshotHover.png" Stretch="None" HorizontalAlignment="Center" Visibility="Collapsed" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="ScreenshotNormal" />
+                                <Setter Property="Visibility" Value="Visible" TargetName="ScreenshotHover" />
+                                <Setter Property="Foreground" Value="{StaticResource KinectBlueBrush}" TargetName="ScreenshotText" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid  Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0,10,0,-10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+
+            
+            
+            <WrapPanel Grid.Row ="0" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top">
+                <Grid
+        Name="GridWeb"
+         Height="300" Width="400">
+                </Grid>
+                <!--
+                <WindowsFormsHost Width="400" Height="300" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                                     
+                    
+                </WindowsFormsHost>
+                -->
+            </WrapPanel>
+            
+            
+            <WrapPanel Grid.Row ="1" Grid.Column="0" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Bottom">
+                <Viewbox Name="Exercise_View"   HorizontalAlignment="Left" Margin="10,10,0,0"   Height="380" Width="600" >
+                    <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
+                </Viewbox>
+            </WrapPanel>
+           
+        <!--
+            <WrapPanel Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left" Height="400" Margin="0,0,0,0" VerticalAlignment="Top" Width="400">
+            <Viewbox Name="Exercise_View" Grid.Row="0" Grid.Column ="0" HorizontalAlignment="Left">
+                <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
+            </Viewbox>
+        </WrapPanel>   
+          -->
+            <!--
+            <Viewbox Name="Exercise_View" HorizontalAlignment="Left" Margin="10,10,0,0" Height="380" Width="600">
+                    <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
+                </Viewbox>
+            -->
+           
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/ExercisePage.png"/>
+            </Grid.Background>
+
+            <TextBlock Name ="Ex_Name" Text="Side Plank" TextWrapping ="Wrap" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="48" Margin="20,20,0,0" FontFamily="Segoe UI Semibold"></TextBlock>
+            <TextBlock Name ="exercise_desc1" Text="Desc1" TextWrapping ="Wrap"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20,120,0,0" FontFamily="Segoe UI Semibold"></TextBlock>
+            <TextBlock Name ="exercise_desc2" Text="Desc2" TextWrapping ="Wrap" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20,350,0,0" FontFamily="Segoe UI Semibold"></TextBlock>
+            <Button x:Name="btnBack" Margin="324,36,34,634" Click="btnBack_Click" RenderTransformOrigin="-0.196,0.651" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/btnBack.png"/>
+                </Button.Background>
+            </Button>
+
+        </Grid>
+    
+        
+    </Grid>
+</Page>
